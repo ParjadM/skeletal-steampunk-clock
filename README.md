@@ -1,102 +1,96 @@
 # Chronos Automata: Skeletal Steampunk Clock
 
-Chronos Automata is an interactive, highly detailed web-based skeletal mechanical clock simulation. Drawing inspiration from Victorian industrial aesthetics and retro-futuristic steampunk design, this project features a fully functional, multi-layered mechanical timepiece. Built entirely with vanilla web technologies, it features mathematically generated vector gear trains, real-time 3D parallax depth, an HTML5 Canvas particle system, and an organic mechanical synthesizer driven by the Web Audio API.
+Chronos Automata is an interactive, highly detailed, and mechanically modeled skeletal steampunk clock. Designed with a retro-futuristic Victorian aesthetic, this web application brings horology to life using advanced CSS 3D transforms, nested SVG parallax layers, a custom Web Audio API engine, and interactive physics-based ambient effects.
+
+---
+
+## Description
+
+Chronos Automata (No. 9482-A, Est. 1889) is a digital tribute to the complexity of skeletal clocks—timepieces designed to display all of their internal moving gears, escapements, and springs. 
+
+By utilizing multiple layered SVG assets rendered inside a glassmorphic 3D cabinet, this project simulates a fully synchronized mechanical gear train. Users can manipulate the passage of time, toggle aesthetic schemes, release pneumatic steam, and listen to a real-time synthesized mechanical soundscape that matches the exact visual rate of the escapement wheel.
 
 ---
 
 ## Features
 
-### ⚙️ Procedural Mechanical Gear Train
-* **Mathematically Generated SVG Gears**: Gear teeth, spokes, and escape wheels are calculated and rendered dynamically using custom SVG path algorithms.
-* **Accurate Transmission Ratios**: Gear rotation speeds correspond to realistic mechanical ratios (e.g., the pinion meshes with the seconds gear at a 2.5:1 ratio, and idlers rotate in perfect sync with the hour and minute wheels).
-* **Working Deadbeat Escapement**: Features a rocking pallet fork (anchor assembly) and an escape wheel that updates with a sharp, realistic snap-back motion.
+### 1. Multi-Layered 3D Skeletal Clockwork
+The clock is split into 7 distinct depth layers inside a glass-enclosed cabinet. Using mouse-tracking parallax, users can look "around" the gears to see the depth:
+*   **Layer 1 (Back Frame):** Heavy industrial rivets and structural load-bearing pillars.
+*   **Layer 2 (Back Gears):** Slow-turning hour wheels and deep-set reduction trains.
+*   **Layer 3 (Middle Gears):** Intermediate reduction train transferring kinetic energy.
+*   **Layer 4 (Frosted Glass Dial):** Semi-opaque chapter ring displaying polished Roman numerals.
+*   **Layer 5 (Front Gears & Escapement):** High-speed escape wheels, pinions, and seconds gear.
+*   **Layer 6 (Pendulum & Escapement Anchor):** A physically rocking anchor with simulated ruby pallets linked to a swinging brass pendulum.
+*   **Layer 7 (Filigree Hands):** Ornate, drop-shadowed brass hour, minute, and crimson second hands.
 
-### 👁️ 3D Parallax Glass Cabinet
-* **Interactive Depth Mapping**: The clock is housed in a glassmorphic cabinet that tilts dynamically in response to mouse movements (or touch inputs on mobile devices).
-* **Layered Z-Axis Separation**: Components are distributed across 7 individual perspective layers (from deepest backplates to front-most filigree hands), creating a striking 3D volumetric effect.
+### 2. Interactive Glassmorphic Control Dashboard
+A floating control panel allows users to configure the workshop machinery:
+*   **Aesthetic Schemes:** Instantly transition CSS variables and SVG gradients between four distinct metallic themes:
+    *   *Victorian Brass* (Default golden warmth)
+    *   *Industrial Copper* (Deep reddish-orange hues)
+    *   *Tempered Steel* (Cool slate-blue tones)
+    *   *Obsidian Gold* (Dark carbon plates accented with gold trim)
+*   **Speed Regulator Slider:** Adjust the clock speed seamlessly from a complete pause (0.0x) up to a hyper-accelerated rate of 50.0x. Watch the gear trains spin and reduce ratios in real-time.
+*   **Pneumatics & Sound Controls:** Release high-pressure steam, toggle synthesized sound effects, or trigger a custom brass chime.
+*   **Live Diagnostics:** View real-time rendering performance (FPS) and mechanical frequency rate (Hz).
 
-### 🔊 Real-Time Web Audio Synthesizer
-* **Procedural Sound Effects**: No static audio files are used. All sounds are synthesized on-the-fly using the Web Audio API.
-* **Dynamic Mechanical Hum**: A low-frequency triangle wave oscillator and lowpass filter create a warm, continuous industrial rumble that pitches up and down based on clock speed.
-* **Acoustic Tick-Tock**: Synthesizes physical impacts using white noise transients combined with resonant sine waves, alternating between distinct "tick" and "tock" pitches.
-* **Resonant Grand Chime**: Generates a deep, harmonically rich gong chime using a fundamental frequency layered with multiple non-integer partials.
-* **Steam Release Hiss**: Models high-pressure pneumatics using bandpass-filtered white noise with exponential decay.
+### 3. Integrated Web Audio API Synthesizer
+Rather than relying on flat audio files, Chronos Automata features a built-in procedural synthesizer:
+*   **Mechanical Ticks:** High-frequency click synthesizers that adjust pitch, decay, and rate to match the current speed of the escapement wheel.
+*   **Pneumatic Steam Release:** A white-noise generator paired with dynamic bandpass filters and gain envelopes to simulate physical high-pressure steam valves.
+*   **Chime System:** A multi-oscillator metallic bell synthesizer simulating a physical heavy brass gong.
 
-### 💨 Thermodynamic Particle Engine
-* **Ember Simulation**: A dedicated HTML5 Canvas background continuously spawns rising golden embers.
-* **Pneumatic Steam Explosions**: Releasing steam triggers a dense burst of expanding, fading steam clouds that drift outwards from behind the glass cabinet.
-
-### 🎛️ Interactive Control Dashboard
-* **Speed Regulator**: Accelerate time from a complete pause (0x) up to 50x speed. Mechanical humming, particle rates, and tick-tock sounds scale proportionally.
-* **Aesthetic Schemes**: Instant, smooth transitions between four historical metal finishes:
-  * **Victorian Brass**: Classic warm gold with dark bronze framing.
-  * **Industrial Copper**: Deep reddish-orange tones with rustic undertones.
-  * **Tempered Steel**: Cold, polished silver and slate-blue components.
-  * **Obsidian Gold**: High-contrast dark charcoal plates highlighted by bright gold trims.
-* **Live Diagnostics**: Real-time readouts monitoring clock engine FPS and the system's mechanical frequency (Hz).
-* **Simulated Physical Gauges**: Two glass-covered analog dials tracking real-time mechanical metrics:
-  * **Boiler PSI**: Fluctuates dynamically based on the energy required to drive the clockwork at various speeds.
-  * **Escapement Torque (N·m)**: Simulates physical tension and high-frequency vibration in the escapement wheel.
+### 4. Ambient Particle & Gauge Simulations
+*   **Steam & Ember Canvas:** A background 2D canvas simulation rendering floating embers and rising steam particles reacting dynamically to user interactions.
+*   **Functional Gauges:** Dual mechanical dial displays indicating simulated Boiler PSI and Escapement Torque (N·m), complete with subtle needle vibrations, micro-fluctuations, and inertia.
 
 ---
 
 ## Tech Stack
 
-* **Structure & Vector Graphics**: HTML5, SVG (Scalable Vector Graphics)
-* **Styling & 3D Layout**: CSS3 (Custom Variables, 3D Transforms, Backdrop Filters, Glassmorphism, CSS Gradients)
-* **Logic & Animation**: Vanilla JavaScript (ES6+)
-* **Audio Synthesis**: Web Audio API (Oscillators, Gain Nodes, Biquad Filters, Audio Buffers)
-* **Background Effects**: HTML5 Canvas 2D API
+*   **Markup & Structuring:** HTML5, Inline Scalable Vector Graphics (SVG)
+*   **Styling & 3D Rendering:** CSS3 (Custom properties, 3D perspective transforms, backdrop-filters, custom radial/linear SVG gradients)
+*   **Interactivity & Physics Engine:** Vanilla JavaScript (ES6+)
+*   **Audio Engine:** Web Audio API (Custom synthesizers, oscillators, white-noise nodes, biquad filters, and dynamic gain envelopes)
+*   **Graphics & Visual Effects:** HTML5 Canvas (2D Context particle systems)
+*   **Typography:** Google Fonts (*Cinzel Decorative*, *Cinzel*, *Special Elite*, *Share Tech Mono*)
+
+---
+
+## File Structure
+
+*   `index.html` — Holds the structural skeleton of the clock, the layered SVG configurations, the control dashboard, and gradient definitions.
+*   `style.css` — Defines the responsive layouts, glassmorphic card stylings, interactive transitions, 3D perspective spaces, and theme variable overrides.
+*   `script.js` — Manages state, handles user interactions, updates visual gear rotations, drives the canvas particle system, animates the gauges, and hosts the procedural Web Audio API synthesizer.
+
+---
+
+## Installation & Local Setup
+
+Since Chronos Automata is built entirely with vanilla web technologies, it requires no compilation, bundlers, or external dependencies.
+
+1.  **Clone or Download the Repository:**
+    ```bash
+    git clone https://github.com/yourusername/chronos-automata.git
+    cd chronos-automata
+    ```
+
+2.  **Run Locally:**
+    *   You can open `index.html` directly in any modern web browser.
+    *   Alternatively, for the best performance and to avoid any potential strict browser-origin policies regarding Web Audio, serve the files using a simple local server:
+        ```bash
+        # Using Python 3
+        python3 -m http.server 8000
+        ```
+        Then navigate to `http://localhost:8000` in your browser.
 
 ---
 
 ## How It Works
 
-### Mathematical Gear Generation
-The gear geometry is generated programmatically using the `createGearPath` and `createEscapeWheelPath` functions. Instead of static images, the script calculates the precise coordinates of gear teeth using trigonometric functions:
+### The Gear Ratio Calculation
+The mechanical gears are not just rotating randomly. Their rotation speeds are calculated based on realistic horological reduction ratios. The second hand completes a full rotation every 60 seconds (at 1x speed), driving the escapement wheel. The minute hand rotates 60 times slower, and the hour hand rotates 12 times slower than the minute hand, keeping the displayed time perfectly accurate.
 
-```javascript
-const step = (Math.PI * 2) / teeth;
-const toothWidth = step * 0.35;
-const slopeWidth = step * 0.12;
-// Generates trapezoidal teeth profiles with subtractive inner spokes
-```
-
-### 3D Parallax Formula
-By normalizing pointer coordinates relative to the viewport center, the application calculates target rotation angles (pitch and yaw). The individual layers then translate along the Z-axis based on their custom `data-depth` attribute:
-
-$$\text{Translation Offset} = \text{Rotation Angle} \times \text{Layer Depth} \times \text{Scale Factor}$$
-
-This translates into a realistic depth shift whenever the user moves their mouse.
-
----
-
-## Installation & Usage
-
-1. Clone or download this repository:
-   ```bash
-   git clone https://github.com/your-username/chronos-automata.git
-   ```
-2. Navigate into the project directory:
-   ```bash
-   cd chronos-automata
-   ```
-3. Open `index.html` directly in any modern web browser, or serve it using a local server (e.g., Live Server in VS Code, Python `http.server`, or Nginx).
-
-*Note: Because the project utilizes the Web Audio API, browsers may require a user interaction (such as clicking "Sound On" or "Release Steam") before audio playback is permitted.*
-
----
-
-## Customization
-
-The project's styling is highly modular and controlled via CSS variables. You can easily modify existing themes or add your own custom material schemes in `style.css` by overriding the following variables:
-
-```css
-body.theme-custom {
-  --metal-bright: url(#your-svg-gradient-bright);
-  --metal-mid: url(#your-svg-gradient-mid);
-  --metal-accent: url(#your-svg-gradient-dark);
-  --frame-color: #hexcolor;
-  --glow-color: rgba(r, g, b, alpha);
-  --accent-solid: #hexcolor;
-}
+### Mouse Parallax Effect
+When moving the mouse across the screen, the application calculates the offset from the center of the viewport and applies a subtle 3D rotation (`rotateX` and `rotateY`) to the `.glass-cabinet` container. Each layer inside the cabinet has a custom `data-depth` attribute. The JavaScript engine translates these depths into subtle offset translations, creating a convincing optical illusion of physical depth behind the glass.
